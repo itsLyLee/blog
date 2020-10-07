@@ -12,6 +12,8 @@ router.post("/", (req, res) => {
     description: req.body.description,
     markdown: req.body.markdown,
   });
+
+  await article.save();
 });
 
 module.exports = router;
