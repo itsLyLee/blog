@@ -6,11 +6,9 @@ router.get("/new", (req, res) => {
   res.render("articles/new");
 });
 
-router.gett('/:id', (req, res) => {
-  
-})
+router.get("/:id", (req, res) => {});
 
-router.post("/", (req, res) => {
+router.post("/", async (req, res) => {
   const article = new Article({
     title: req.body.title,
     description: req.body.description,
@@ -18,9 +16,9 @@ router.post("/", (req, res) => {
   });
   try {
     article = await article.save();
-    res.redirect(`/articles/${article.id}`)
+    res.redirect(`/articles/${article.id}`);
   } catch (e) {
-
+    res.render("articles/new", { article: article });
   }
 });
 
