@@ -6,6 +6,10 @@ router.get("/new", (req, res) => {
   res.render("articles/new");
 });
 
+router.gett('/:id', (req, res) => {
+  
+})
+
 router.post("/", (req, res) => {
   const article = new Article({
     title: req.body.title,
