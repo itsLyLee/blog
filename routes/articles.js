@@ -12,8 +12,12 @@ router.post("/", (req, res) => {
     description: req.body.description,
     markdown: req.body.markdown,
   });
+  try {
+    article = await article.save();
+    res.redirect(`/articles/${article.id}`)
+  } catch (e) {
 
-  await article.save();
+  }
 });
 
 module.exports = router;
